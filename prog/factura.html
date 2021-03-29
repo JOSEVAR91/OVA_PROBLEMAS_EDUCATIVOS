@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="IE=edge">
+        <title>factura</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <style>
+            body{
+                background-color: burlywood;
+            }
+            script{
+                background-color: chartreuse;
+                color: coral;
+            }
+        </style>
+    </head>
+    <body>
+        <script center>
+            function generarProductos(){
+                var productos, precios, cantidades, subtotal=0, subtotalf=0, iva=0,tp=0;
+                var nom, pre,cant,met,met1,met2,met3, nomcl,dir,doc, tel,cont=0, i=0;
+                var f = new Date();
+                nomcl=prompt("nombres: ");
+                dir=prompt("direccion de la empresa o domicilio: " + nomcl);
+                tel=prompt("número de contacto del cliente: "+ nomcl);
+                doc=prompt("número de documento de identificacion del cliente: "+ nomcl);
+                alert("elija metodo de pago. Efectivo, Tarjeta de Crédito");
+                met=prompt("Si es Efestivo ponga + y si es por tarjeta ponga -");
+
+                document.write("<strong>fecha: </strong>"+f.getDate()+ "/" +(f.getMonth() +1) + f.getUTCFullYear());
+                document.write("<strong><br><br>INFORMACIÓN DEL CLIENTE<br/><br/><strong/>");
+                document.write("<l1>NOMBRE DEL CLIENTE: </l1>" +nomcl+"<br/>","","<l1> Dirección del Cliente: </l1> " +dir+"<br/>","","<l1> Teléfono del Cliente : </l1>"+tel+"<br/>", "", "<l1> Número de identificación : </l1"+doc+"<br/>");
+                    if(met=="-"){
+                        met1=prompt("ingrese número de tarjeta");
+                        met2="targeta de crédito"
+                        document.write("<strong><br>Método de Pago: " +met2+"<br/><strong/>");
+                        document.write("<strong><br>Número de targeta: "+met1+"<br/><strong/>");
+                    }else{
+                        met3="efectivo"
+                        document.write("<strong><br>Método de pago: " +met3+"<br/><strong/>");
+                    }
+                    for(i=0;cont!="*";i++){
+                        productos=new Array();
+                        precios=new Array();
+                        cantidades=new Array();
+                        subtotal=new Array();
+
+                     nom=prompt("Ingrese nombre del producto");
+                     productos[i]=nom;
+                      cant=prompt("ingrese cuantas unidades de "+nom+" desea llevar");
+                      cantidades[i]=nom;
+                      pre=prompt("ingrese precio unitario");
+                      precios[i]=parseInt(pre);
+
+                    alert("Para continuar presione ENTER. Para generar factura presione *");
+                    cont=prompt("¿Desea continuar?");
+                    subtotal[i]=cantidades[i]*precios[i];
+                    tp=tp+subtotal[i];
+                    subtotal=tp/1.19;
+                    iva=tp-subtotalf;
+                    var decimal= iva.toFixed(2);
+                    var decimal1= subtotalf.toFixed(2);
+
+
+                    document.write("<h1>-----------------PRODUCTO------------------</h1>");
+                    document.write("<l1>Producto ingresado:</l1>"+productos[i]+"<br/>","","<l1> Cantidad ingresada:</l1>");
+                    
+                    }
+
+
+                    document.write("<h1>-----------------------TOTAL---------------------</h1>");
+                    document.write("<br><strong>IVA: $"+decimal+"<strong/><br/>");
+                    document.write("<br><strong>SUBTOTAL: $"+decimal1+"<strong/><br/>");
+                    document.write("<br><h1><strong> Total a Pagar $"+tp+"</strong><h1/></br>");
+                    document.write("<button onclick= window.print()> IMPRIMIR </button>");
+
+
+            }
+        </script>
+        <input type="button" onclick= "generarProductos()" value="INGRESAR">
+    </body>
+</html>
